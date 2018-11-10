@@ -1,0 +1,31 @@
+<html xmlns:sql="http://java.sun.com/xml/ns/j2ee" xmlns:c="">
+
+<head>
+    <title>SELECT Operation</title>
+</head>
+
+<body>
+<sql:setDataSource var = "login" driver = "com.mysql.jdbc.Driver"
+                   url = "jdbc:mysql://localhost/brew_star"
+                   user = "root"  password = "Ramya0909@"/>
+
+<sql:query dataSource = "${login}" var = "result">
+    INSERT INTO login VALUES ("hello", "hello");
+</sql:query>
+
+<table border = "1" width = "100%">
+    <tr>
+        <th>User Name : </th>
+        <th>Password : </th>
+    </tr>
+
+    <c:forEach var = "row" items = "${result.rows}">
+        <tr>
+            <td><c:out value = "${row.uname}"/></td>
+            <td><c:out value = "${row.pwd}"/></td>
+         </tr>
+    </c:forEach>
+</table>
+
+</body>
+</html>
